@@ -8,13 +8,12 @@ module.exports = function(sequelize, DataTypes) {
 	  devoured: {
 		type: DataTypes.BOOLEAN,
 		defaultValue: false
-	  }
-	}, {
-	  classMethods: {
-		associate: function(models) {
-		  Burger.hasOne(models.Customer);
-		}
-	  }
+	  },
 	});
+
+	Burger.associate = (models) => {
+		Burger.hasOne(models.Customer);
+	}
+	
 	return Burger;
-  };
+};
